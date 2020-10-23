@@ -1,5 +1,5 @@
 {
-  "name": "react-tinacms-sanity",
+  "name": "@ndvo/react-tinacms-sanity",
   "version": "0.0.1",
   "description": "Provides React hooks for using the Sanity.io client within TinaCMS",
   "main": "dist/index.js",
