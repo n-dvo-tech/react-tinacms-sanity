@@ -1,0 +1,7 @@
+src
+.gitignore
+.npmrc
+.eslintignore
+.eslintrc.json
+tsconfig.json
+*.tgz
