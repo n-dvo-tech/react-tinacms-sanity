@@ -2,8 +2,8 @@ import React, {
   createContext,
   useContext,
   useEffect,
-  useState,
   useMemo,
+  useState,
 } from "react";
 import sanityClient, { SanityClient, ClientConfig } from "@sanity/client";
 import { useCMS } from "@tinacms/react-core";
@@ -48,9 +48,9 @@ const SanityProvider: React.FunctionComponent<ClientConfig> = ({
       const rootSchema = await init({
         dataset: options.dataset,
         projectId: options.projectId,
+        useCdn: options.useCdn,
       });
       setRootSchema(rootSchema);
-      console.log(rootSchema);
     };
     loadRootSchema();
 

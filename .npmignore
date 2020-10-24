@@ -1,7 +1,11 @@
-src
+/src
 .gitignore
 .npmrc
 .eslintignore
 .eslintrc.json
 tsconfig.json
 *.tgz
+coverage
+**.*.test.js
+commitlint.config.js
+jest.config.js
