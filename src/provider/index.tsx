@@ -48,6 +48,7 @@ const SanityProvider: React.FunctionComponent<ClientConfig> = ({
       const rootSchema = await init({
         dataset: options.dataset,
         projectId: options.projectId,
+        useCdn: options.useCdn,
       });
       setRootSchema(rootSchema);
     };

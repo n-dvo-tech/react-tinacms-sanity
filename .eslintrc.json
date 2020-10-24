@@ -42,6 +42,7 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "react-hooks/rules-of-hooks": "warn",
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
+    "sort-imports": "warn"
   }
 }
