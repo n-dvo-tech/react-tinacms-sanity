@@ -50,7 +50,6 @@ const SanityProvider: React.FunctionComponent<ClientConfig> = ({
         projectId: options.projectId,
       });
       setRootSchema(rootSchema);
-      console.log(rootSchema);
     };
     loadRootSchema();
 
