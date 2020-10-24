@@ -13,6 +13,14 @@
   },
   "author": "Nate Dvorachek",
   "license": "ISC",
+  "homepage": "https://github.com/n-dvo-tech/react-tinacms-sanity",
+  "bugs": {
+    "url": "https://github.com/n-dvo-tech/react-tinacms-sanity/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n-dvo-tech/react-tinacms-sanity/"
+  },
   "peerDependencies": {
     "react": "^16.13.0",
     "tinacms": "^0.32.0"
