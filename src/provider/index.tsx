@@ -2,8 +2,8 @@ import React, {
   createContext,
   useContext,
   useEffect,
-  useState,
   useMemo,
+  useState,
 } from "react";
 import sanityClient, { SanityClient, ClientConfig } from "@sanity/client";
 import { useCMS } from "@tinacms/react-core";
