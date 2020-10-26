@@ -1,6 +1,6 @@
 {
   "name": "@ndvorachek/react-tinacms-sanity",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Provides React hooks for using the Sanity.io client within TinaCMS",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
