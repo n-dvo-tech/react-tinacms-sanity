@@ -1,6 +1,6 @@
 {
   "name": "@ndvorachek/react-tinacms-sanity",
-  "version": "0.0.2-beta.9",
+  "version": "1.0.0",
   "description": "Provides React hooks for using the Sanity.io client within TinaCMS",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -9,7 +9,8 @@
     "lint": "eslint \"./**/*{.ts,.tsx}\"",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "semantic-release": "semantic-release"
   },
   "author": "Nate Dvorachek",
   "license": "ISC",
@@ -28,6 +29,8 @@
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/release-notes-generator": "9.0.1",
     "@tinacms/react-core": "0.32.0",
     "@types/jest": "26.0.15",
     "@types/react": "16.9.53",
@@ -44,6 +47,7 @@
     "prettier": "2.1.2",
     "pretty-quick": "3.1.0",
     "react": "16.13.1",
+    "semantic-release": "^17.2.1",
     "ts-jest": "26.4.2",
     "typescript": "4.0.3"
   },
