@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - next
 jobs:
   release:
     name: Release
@@ -23,9 +24,8 @@ jobs:
         env:
           CI: true
       - run: npm run build --if-present
-
-#       - name: Release
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-#         run: npx semantic-release
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release --dry-run
