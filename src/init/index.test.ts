@@ -22,7 +22,24 @@ describe("init", () => {
     expect(res).toEqual(returnValue);
   });
 
-  it("should log except and return null upon error", async () => {
+  it("should initialize sanity api (useCdn)", async () => {
+    const projectId = "test";
+    const dataset = "test-data";
+    const useCdn = true;
+    const returnValue = { data: "value" };
+
+    nock(`https://${projectId}.apicdn.sanity.io`)
+      .post(`/v1/graphql/${dataset}/default`, (body) => {
+        expect(body.query).toEqual(rootQuery);
+        return true;
+      })
+      .reply(200, returnValue);
+
+    const res = await init({ projectId, dataset, useCdn });
+    expect(res).toEqual(returnValue);
+  });
+
+  it("should log except and return empty object upon error", async () => {
     const projectId = "test";
     const dataset = "test-data";
     const returnValue = { data: "value" };
@@ -37,6 +54,8 @@ describe("init", () => {
     const res = await init({ projectId, dataset });
 
     expect(logger.error).toHaveBeenCalled();
-    expect(res).toEqual(null);
+    expect(res).toEqual({});
   });
+
+  it("should catch exception", () => {});
 });

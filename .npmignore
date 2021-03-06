@@ -9,3 +9,8 @@ coverage
 **.*.test.js
 commitlint.config.js
 jest.config.js
+jest.tsconfig.json
+babel.config.js
+release.config.json
+.releaserc.json
+.github/**/*
