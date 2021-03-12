@@ -1,12 +1,5 @@
 {
   "release": {
-    "branches": [
-      "main",
-      {
-        "name": "next",
-        "channel": "beta",
-        "prerelease": "beta"
-      }
-    ]
+    "branches": ["main", "next"]
   }
 }
