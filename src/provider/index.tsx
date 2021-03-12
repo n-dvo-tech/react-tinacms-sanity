@@ -1,13 +1,15 @@
+import { ClientConfig, SanityClient } from "@sanity/client";
 import React, {
+  ReactElement,
   createContext,
   useContext,
   useEffect,
-  useMemo,
   useState,
 } from "react";
-import sanityClient, { SanityClient, ClientConfig } from "@sanity/client";
+import { logger } from "../utils";
 import { useCMS } from "@tinacms/react-core";
-import init from "../init";
+import useSanityClient from "../hooks/useSanityClient";
+import useSanityRootSchema from "../hooks/useSanityRootSchema";
 
 let SanityContext:
   | React.Context<SanityConsumerProps>
@@ -20,43 +22,41 @@ export const useSanityContext = (): SanityConsumerProps =>
 
 export const withSanityContext = (
   Component: React.ComponentType<SanityConsumerProps>
-): React.ReactNode => {
-  if ("config" in SanityContext.Consumer) {
-    const Consumer = SanityContext.Consumer as React.Consumer<
-      SanityClient | any
-    >;
+): ReactElement => {
+  const Consumer = SanityContext.Consumer as React.Consumer<SanityClient | any>;
 
-    return (
-      <Consumer>
-        {({ client, rootSchema, ...props }) => (
-          <Component client={client} rootSchema={rootSchema} {...props} />
-        )}
-      </Consumer>
-    );
-  }
+  return (
+    <Consumer>
+      {({ client, rootSchema, ...rest }) => {
+        if (!client) {
+          logger.warn(
+            "Sanity Provider does not contain proper config... client missing"
+          );
+        }
+
+        if (!rootSchema) {
+          logger.warn(
+            "Sanity Provider does not contain proper config... rootSchema missing"
+          );
+        }
+
+        return <Component client={client} rootSchema={rootSchema} {...rest} />;
+      }}
+    </Consumer>
+  );
 };
-
 const SanityProvider: React.FunctionComponent<ClientConfig> = ({
   children,
-  ...options
+  ..._options
 }) => {
   const cms = useCMS();
-  const [rootSchema, setRootSchema] = useState<Record<string, Object>>({});
-  const client = useMemo(() => sanityClient(options), [options]);
+  const [options, setOptions] = useState<ClientConfig>(_options);
+  const client = useSanityClient(_options);
+  const rootSchema = useSanityRootSchema(cms, client, _options);
+
   useEffect(() => {
-    const loadRootSchema = async () => {
-      const rootSchema = await init({
-        dataset: options.dataset,
-        projectId: options.projectId,
-        useCdn: options.useCdn,
-      });
-      setRootSchema(rootSchema);
-    };
-    loadRootSchema();
-
-    cms.registerApi("sanityClient", client);
-  }, []);
-
+    setOptions(options);
+  }, [_options]);
   return (
     <SanityContext.Provider value={{ client, rootSchema }}>
       {children}
