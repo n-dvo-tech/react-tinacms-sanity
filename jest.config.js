@@ -11,14 +11,14 @@ module.exports = {
   displayName: "react-tinacms-sanity",
   preset: "ts-jest",
   testEnvironment: "jsdom",
-  // coverageThreshold: {
-  //   global: {
-  //     statements: 95,
-  //     branches: 95,
-  //     functions: 95,
-  //     lines: 95,
-  //   },
-  // },
+  coverageThreshold: {
+    global: {
+      statements: 95,
+      branches: 85,
+      functions: 90,
+      lines: 95,
+    },
+  },
   testRegex: "/.*\\.test\\.[t|j]s*(x)?$",
   transform: {
     "^.+\\.jsx?$": "babel-jest",
@@ -33,5 +33,4 @@ module.exports = {
     "!src/polyfills/**/*.js",
   ],
   setupFilesAfterEnv: [".//utils/jest/setup.js"],
-  // coverageProvider: "v8",
 };
