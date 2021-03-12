@@ -1,13 +1,12 @@
-name: Release
+name: Test
 on:
-  push:
+  pull_request:
     branches:
       - main
       - next
-      - beta
 jobs:
-  release:
-    name: Release
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,8 +24,3 @@ jobs:
         env:
           CI: true
       - run: npm run build --if-present
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
