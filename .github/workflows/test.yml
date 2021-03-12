@@ -1,6 +1,6 @@
 name: Test
 on:
-  pull_requests:
+  pull_request:
     branches:
       - main
       - next
